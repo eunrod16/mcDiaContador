@@ -1,6 +1,6 @@
 const express = require('express')
 const path = require('path')
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 3000
 const crypto = require('crypto');
 const request = require('request')
 const base64 = require('base-64');
