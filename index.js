@@ -1,11 +1,12 @@
 const express = require('express')
 const path = require('path')
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 3000
 const crypto = require('crypto');
 const request = require('request')
 const base64 = require('base-64');
 const urlencode = require('urlencode');
 const parser = require('xml2json');
+const fs = require('fs');
 server = express()
 .use(express.static(path.join(__dirname, 'public')))
 .set('views', path.join(__dirname, 'views'))
@@ -24,7 +25,7 @@ var bigMacs;
 
 setInterval(() => {
   consumeService();
-}, 2000);
+}, 300000);
 
 
 
@@ -49,8 +50,25 @@ function consumeService(){
   function (error, body, response) {
     if (response){
       var responseJson = JSON.parse(parser.toJson(response))
-      var bigMacsNuevo = responseJson["mensajeSalida"]["resp"]!="error"?responseJson.mensajeSalida.resp.BIGMACS:"";
-      var hora = responseJson["mensajeSalida"]["resp"]!="error"?responseJson.mensajeSalida.resp.HORA:"";
+      var bigMacsNuevo="", hora ="";
+      if(responseJson["mensajeSalida"]){
+        if(responseJson["mensajeSalida"]["resp"]){
+          if(responseJson["mensajeSalida"]["resp"]!="error"){
+            bigMacsNuevo = responseJson.mensajeSalida.resp.BIGMACS;
+            hora = responseJson.mensajeSalida.resp.HORA;
+          }
+        }
+      }
+
+      if(bigMacsNuevo==""){
+        var today = new Date();
+        fs.appendFile("errorLog.txt", "["+today+"]"+response+"\n", function(err) {
+            if(err) {
+                return console.log(err);
+            }
+        });
+        return;
+      }
       if( bigMacsNuevo!=bigMacs){
         bigMacs = bigMacsNuevo;
         var contador = '{'+
@@ -58,7 +76,6 @@ function consumeService(){
         '"hora":"'+hora+'"'+
         '}';
         enviarContador(contador);
-        console.log(bigMacs,hora);
       }
 
     }
