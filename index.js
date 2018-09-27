@@ -25,7 +25,7 @@ var bigMacs;
 
 setInterval(() => {
   consumeService();
-}, 300000);
+}, 60000);
 
 
 
@@ -49,6 +49,7 @@ function consumeService(){
   },
   function (error, body, response) {
     if (response){
+      console.log(response);
       var responseJson = JSON.parse(parser.toJson(response))
       var bigMacsNuevo="", hora ="";
       if(responseJson["mensajeSalida"]){
