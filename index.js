@@ -24,6 +24,12 @@ var data64,url;
 var bigMacs;
 
 setInterval(() => {
+    wss.clients.forEach((client) => {
+    client.send("test conection");
+  });
+}, 2000);
+
+setInterval(() => {
   consumeService();
 }, 60000);
 
