@@ -29,10 +29,10 @@ setInterval(() => {
   });
 }, 2000);
 
-setInterval(() => {
+/*setInterval(() => {
   consumeService();
 }, 60000);
-
+*/
 
 
 hmac.on('readable', () => {
