@@ -31,7 +31,7 @@ setInterval(() => {
 
 setInterval(() => {
   consumeService();
-}, 300000);
+}, 60000);
 
 
 
