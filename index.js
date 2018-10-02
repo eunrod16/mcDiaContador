@@ -29,10 +29,10 @@ setInterval(() => {
   });
 }, 2000);
 
-/*setInterval(() => {
+setInterval(() => {
   consumeService();
-}, 60000);
-*/
+}, 300000);
+
 
 
 hmac.on('readable', () => {
@@ -76,7 +76,7 @@ function consumeService(){
         });
         return;
       }
-      if( 1){
+      if(bigMacs!=bigMacsNuevo){
         bigMacs = bigMacsNuevo;
         var contador = '{'+
         '"bigMacs":'+bigMacs+','+
@@ -90,8 +90,16 @@ function consumeService(){
   });
 }
 function enviarContador(contador){
+  var clientes =0;
+  var today = new Date();
   wss.clients.forEach((client) => {
     client.send(contador);
+    clientes++;
+  });
+  fs.appendFile("errorLog.txt", "["+today+"] Enviado a ["+clientes+"] clientes\n", function(err) {
+      if(err) {
+          return console.log(err);
+      }
   });
 }
 
