@@ -13,7 +13,6 @@ server = express()
 .set('view engine', 'ejs')
 .get('/', (req, res) => res.render('pages/index'))
 .listen(PORT, () => console.log(`Listening on ${ PORT }`))
-
 const producto = 'BigMacAcumulado';
 const appId = '17ba0791499db908433b80f37c5fbc89b870084b&version=1';
 const noCia = '40';
