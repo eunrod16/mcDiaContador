@@ -15,7 +15,7 @@ server = express()
 .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 const producto = 'BigMacAcumulado';
 const appId = '17ba0791499db908433b80f37c5fbc89b870084b&version=1';
-const noCia = '40';
+const noCia = '59';
 const jsonParam = '{"webservice":"'+ producto +'", "no_cia":"'+noCia+'"}';
 const key = 'f4beb6875f1a57333b0a';
 const hmac = crypto.createHmac('sha256', key);
