@@ -6,3 +6,5 @@
 [Thu Sep 27 2018 10:09:22 GMT-0600 (CST)]<html><head><title>Error report</title></head><body><h1>HTTP Status 404 - /usmcdgt03/rest/gw/exec</h1></body></html>
 [Tue Oct 02 2018 13:49:58 GMT-0600 (CST)] Enviado a [0] clientes
 [Tue Oct 02 2018 17:04:14 GMT-0600 (CST)] Enviado a [0] clientes
+[Thu Oct 18 2018 16:09:34 GMT-0600 (CST)] Enviado a [1] clientes
+[Thu Oct 18 2018 16:12:48 GMT-0600 (CST)] Enviado a [1] clientes

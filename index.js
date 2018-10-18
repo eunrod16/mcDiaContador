@@ -20,7 +20,7 @@ const jsonParam = '{"webservice":"'+ producto +'", "no_cia":"'+noCia+'"}';
 const key = 'f4beb6875f1a57333b0a';
 const hmac = crypto.createHmac('sha256', key);
 var data64,url;
-var bigMacs;
+var bigMacs=0;
 
 setInterval(() => {
     wss.clients.forEach((client) => {
@@ -112,5 +112,10 @@ wss.on('connection', (ws) => {
 
   console.log('Client connected');
   ws.on('close', () => console.log('Client disconnected'));
+  var contador = '{'+
+  '"bigMacs":'+bigMacs+','+
+  '"hora":"00:00"'+
+  '}';
+  ws.send(contador);
 
 });
