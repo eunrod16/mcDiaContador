@@ -75,7 +75,7 @@ function consumeService(){
         });
         return;
       }
-      if(1){
+      if(bigMacs!=bigMacsNuevo){
         bigMacs = bigMacsNuevo;
         var contador = '{'+
         '"bigMacs":'+bigMacs+','+
