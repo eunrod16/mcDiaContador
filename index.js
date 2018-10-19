@@ -21,6 +21,7 @@ const key = 'f4beb6875f1a57333b0a';
 const hmac = crypto.createHmac('sha256', key);
 var data64,url;
 var bigMacs=0;
+var horaGuardada= "00:00"
 
 setInterval(() => {
     wss.clients.forEach((client) => {
@@ -77,6 +78,7 @@ function consumeService(){
       }
       if(bigMacs!=bigMacsNuevo){
         bigMacs = bigMacsNuevo;
+        horaGuardada=hora;
         var contador = '{'+
         '"bigMacs":'+bigMacs+','+
         '"hora":"'+hora+'"'+
@@ -114,7 +116,7 @@ wss.on('connection', (ws) => {
   ws.on('close', () => console.log('Client disconnected'));
   var contador = '{'+
   '"bigMacs":'+bigMacs+','+
-  '"hora":"00:00"'+
+  '"hora":"'+horaGuardada+'"'+
   '}';
   ws.send(contador);
 
